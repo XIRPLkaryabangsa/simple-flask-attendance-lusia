@@ -17,8 +17,12 @@ class Absensi(db.Model):
         self.nama = nama
         self.tanggal = tanggal
         self.status = status  # Initialize status
-
 @app.route('/', methods=['GET'])
+def absensi():
+    records = Absensi.query.all()
+    return render_template('list_absensi_copy.html', records=records)
+
+@app.route('/index', methods=['GET'])
 def index():
     return render_template('index.html')
         
